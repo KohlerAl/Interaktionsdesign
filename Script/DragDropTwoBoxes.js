@@ -1,11 +1,10 @@
 "use strict";
-var Interaktionsdesign;
-(function (Interaktionsdesign) {
+var DragDropTwoBoxes;
+(function (DragDropTwoBoxes) {
     window.addEventListener("load", handleLoad);
     let instance;
     function handleLoad() {
         instance = new DragDrop();
-        console.log("load");
     }
     class DragDrop {
         parentContainer;
@@ -37,7 +36,6 @@ var Interaktionsdesign;
         drop(_event) {
             _event.preventDefault();
             let data = _event.dataTransfer.getData("text");
-            console.log(_event.target.id);
             let trigger = instance.parentContainer.querySelector("#" + data);
             //Error Handling: Not allowing wrong drags
             /* if (trigger.classList.contains("contA") && _event.target.id == "dropA" || trigger.classList.contains("contB") && _event.target.id == "dropB") {
@@ -48,25 +46,30 @@ var Interaktionsdesign;
         check() {
             let allAchildren = instance.containerA.children;
             for (let ele of allAchildren) {
-                if (ele.classList.contains("contB"))
+                if (ele.classList.contains("contB")) {
                     instance.parentContainer.appendChild(ele);
-                ele.classList.add("wiggle");
-                window.setTimeout(function () {
-                    ele.classList.remove("wiggle");
-                }, 2500);
+                    ele.classList.add("wiggle");
+                    window.setTimeout(function () {
+                        ele.classList.remove("wiggle");
+                    }, 2500);
+                }
             }
             let allBchildren = instance.containerB.children;
             for (let ele of allBchildren) {
-                if (ele.classList.contains("contA"))
+                if (ele.classList.contains("contA")) {
                     instance.parentContainer.appendChild(ele);
-                ele.classList.add("wiggle");
-                window.setTimeout(function () {
-                    ele.classList.remove("wiggle");
-                }, 2500);
+                    instance.timeoutWiggle(ele);
+                }
             }
         }
+        timeoutWiggle(_ele) {
+            _ele.classList.add("wiggle");
+            window.setTimeout(function () {
+                _ele.classList.remove("wiggle");
+            }, 2500);
+        }
     }
-    Interaktionsdesign.DragDrop = DragDrop;
+    DragDropTwoBoxes.DragDrop = DragDrop;
     class DragElement {
         htmlElement;
         constructor(_ele) {
@@ -77,6 +80,6 @@ var Interaktionsdesign;
             _event.dataTransfer.setData("text", _event.target.id);
         }
     }
-    Interaktionsdesign.DragElement = DragElement;
-})(Interaktionsdesign || (Interaktionsdesign = {}));
-//# sourceMappingURL=Playground.js.map
+    DragDropTwoBoxes.DragElement = DragElement;
+})(DragDropTwoBoxes || (DragDropTwoBoxes = {}));
+//# sourceMappingURL=DragDropTwoBoxes.js.map

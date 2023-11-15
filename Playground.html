@@ -5,30 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playground</title>
-    <script src="Script/Playground.js"></script>
+    <script src="Script/DragDropTwoBoxes.js"></script>
+    <script src="Script/DragDropFourBoxes.js"></script>
     <link rel="stylesheet" href="Playground.css">
 </head>
 
 <body>
 
     <div id="dragdropContainer">
-        <h1>Drag and Drop 2 Boxes</h1>
+        <h1>Drag and Drop 2 Boxes (Several images in one box)</h1>
+        <p>The ghost and the duck belong in the first box, the heart in the second.</p>
         <div id="dropA" style="height: 150px; width: 300px; border: 1px solid black">
         </div>
-        <div id="dropB" style="height: 150px; width: 300px; border: 1px solid red">
+        <div id="dropB" style="height: 150px; width: 300px; border: 1px solid forestgreen">
         </div>
 
         <button type="button" id="checkButton">Check answers</button>
         <div id="imgContainer">
-            <img src="img/ghost.png" id="drag1" class="contA" style="width: 100px; height: 100px;">
-            <img src="img/duck.jpg" id="drag2" class="contA" style="width: 100px; height: 100px;">
-            <img src="img/heart.jpg" id="drag3" class="contB" style="width: 100px; height: 100px;">
+            <img src="img/ghost.png" id="drag1" class="contA" >
+            <img src="img/duck.jpg" id="drag2" class="contA" >
+            <img src="img/heart.jpg" id="drag3" class="contB" >
         </div>
     </div>
 
 
     <div id="dragdropBox">
-        <h1>Drag and Drop 4 Boxes</h1>
+        <h1>Drag and Drop 4 Boxes (1 Image per box)</h1>
+        <p>The images belong in the boxes in order of appearance
+
+        </p>
+        <div id="drop1" style="height: 150px; width: 150px; border: 1px solid black"></div>
+        <div id="drop2" style="height: 150px; width: 150px; border: 1px solid forestgreen"></div>
+        <div id="drop3" style="height: 150px; width: 150px; border: 1px solid aqua"></div>
+        <div id="drop4" style="height: 150px; width: 150px; border: 1px solid darkgoldenrod"></div>
+        <button type="button" id="controlButton">Check answers</button>
+
+        <div id="imagesCont">
+            <img src="img/ghost.png" id="dragA" class="contA" >
+            <img src="img/duck.jpg" id="dragB" class="contB" >
+            <img src="img/heart.jpg" id="dragC" class="contC" >
+            <img src="img/dino.jpg" id="dragD" class="contD" >
+        </div>
+
+    </div>
+
+    <div id="multipleChoice">
+        <h1>Multiple Choice mit 2-4 Antwortmöglichkeiten</h1>
+        <p>Das ist eine Frage</p>
+
+        <div class="answerWrapper false">
+            <p>Das ist eine falsche Antwort</p>
+        </div>
+        <div class="answerWrapper right">
+            <p>Das ist die richtige Antwort</p>
+        </div>
+        <div class="answerWrapper false">
+            <p>Das ist eine falsche Antwort</p>
+        </div>
+        <div class="answerWrapper false">
+            <p>Das ist eine falsche Antwort</p>
+        </div>
     </div>
 </body>
 

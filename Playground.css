@@ -1,14 +1,37 @@
 /* Animations */
 
 @keyframes wiggle {
-    0% { transform: rotate(0deg); }
-   80% { transform: rotate(0deg); }
-   85% { transform: rotate(5deg); }
-   95% { transform: rotate(-5deg); }
+   0% { transform: rotate(0deg); }
+   25% { transform: rotate(5deg); }
+   50% { transform: rotate(-5deg); }
   100% { transform: rotate(0deg); }
 }
 
 .wiggle {
   display: inline-block;
   animation: wiggle 2.5s infinite;
+}
+
+div {
+  display: inline-block;
+}
+
+/* Div-Boxes */
+
+.answerWrapper {
+  width: 150px;
+  border: 1px solid teal;
+  height: 150px;
+}
+
+#multipleChoice, #dragdropBox, #dragdropContainer {
+  display: block;
+}
+
+
+/* Images */
+
+img {
+  width: 100px;
+  height: 100px;
 }
