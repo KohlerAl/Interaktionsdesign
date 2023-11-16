@@ -95,6 +95,7 @@ namespace DragDropTwoBoxes {
         }
 
         drag(_event: any) {
+            _event.preventDefault(); 
             instance.lastID = _event.target.id;
             instance.isDragging = true;
         }

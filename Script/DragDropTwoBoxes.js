@@ -76,6 +76,7 @@ var DragDropTwoBoxes;
             this.htmlElement.addEventListener("pointerdown", this.drag);
         }
         drag(_event) {
+            _event.preventDefault();
             instance.lastID = _event.target.id;
             instance.isDragging = true;
         }
