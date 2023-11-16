@@ -20,19 +20,33 @@ namespace DragDropTwoBoxes {
         lastID: string;
         isDragging: boolean = false;
 
+        aRect: number[] = []; 
+        bRect: number[] = []; 
+
 
         constructor() {
             this.parentContainer = <HTMLDivElement>document.querySelector("#dragdropContainer");
             this.containerA = <HTMLDivElement>this.parentContainer.querySelector("#dropA");
             this.containerB = <HTMLDivElement>this.parentContainer.querySelector("#dropB");
-            this.containerA.addEventListener("pointerover", this.drop);
-            this.containerB.addEventListener("pointerover", this.drop);
-            this.containerA.addEventListener("pointerup", this.drop);
-            this.containerB.addEventListener("pointerup", this.drop);
+
+
+            this.parentContainer.addEventListener("touchmove", this.over);
+            this.parentContainer.addEventListener("touchend", this.drop);
             this.button = <HTMLButtonElement>this.parentContainer.querySelector("#checkButton");
             this.button.addEventListener("pointerdown", this.check);
             instance = this;
+
+            this.getRects(); 
             this.createDrag();
+        }
+
+
+        getRects(): void {
+            let pos = this.containerA.getBoundingClientRect(); 
+            this.aRect = [pos.x, pos.y, pos.x + pos.width, pos.y + pos.height]; 
+
+            let posB = this.containerB.getBoundingClientRect(); 
+            this.bRect = [posB.x, posB.y, posB.x + posB.width, posB.y + posB.height]; 
         }
 
 
@@ -42,17 +56,22 @@ namespace DragDropTwoBoxes {
             new DragElement(<HTMLElement>instance.parentContainer.querySelector("#drag3"))
         }
 
-        drop(_event: any) {
+        over(_event: any): void {
+            _event.preventDefault(); 
+        }
+
+        drop(_event: TouchEvent) {
             _event.preventDefault();
-            if (instance.isDragging) {
-                let trigger: HTMLElement = <HTMLElement>instance.parentContainer.querySelector("#" + instance.lastID)
-
-                //Error Handling: Not allowing wrong drags
-                /* if (trigger.classList.contains("contA") && _event.target.id == "dropA" || trigger.classList.contains("contB") && _event.target.id == "dropB") {
-                    _event.target.appendChild(trigger);
-                } */
-
-                _event.target.appendChild(trigger);
+            console.log(instance.isDragging); 
+            if (instance.isDragging && instance.checkInside(instance.aRect, _event.changedTouches[0].clientX, _event.changedTouches[0].clientY)) {
+                let trigger: HTMLElement = <HTMLElement>instance.parentContainer.querySelector("#" + instance.lastID); 
+                instance.containerA.appendChild(trigger);
+                instance.isDragging = false; 
+            }
+            else if ((instance.isDragging && instance.checkInside(instance.bRect, _event.changedTouches[0].clientX, _event.changedTouches[0].clientY))) {
+                let trigger: HTMLElement = <HTMLElement>instance.parentContainer.querySelector("#" + instance.lastID); 
+                instance.containerB.appendChild(trigger);
+                console.log("aaaaaaaaaaaaaaaaa"); 
                 instance.isDragging = false; 
             }
         }
@@ -86,6 +105,14 @@ namespace DragDropTwoBoxes {
                 _ele.classList.remove("wiggle")
             }, 2500)
         }
+
+        checkInside(_rect: number[], _x: number, _y: number): boolean {
+            if(_x > _rect[0] && _x < _rect [2] && _y > _rect[1] && _y < _rect[3]) {
+                return true
+            }
+            else 
+                return false; 
+        }
     }
 
     export class DragElement {
@@ -97,6 +124,7 @@ namespace DragDropTwoBoxes {
         }
 
         drag(_event: any) {
+            console.log("drag")
             _event.preventDefault(); 
             instance.lastID = _event.target.id;
             instance.isDragging = true;

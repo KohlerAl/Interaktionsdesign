@@ -14,33 +14,46 @@ var DragDropTwoBoxes;
         imgcontainer;
         lastID;
         isDragging = false;
+        aRect = [];
+        bRect = [];
         constructor() {
             this.parentContainer = document.querySelector("#dragdropContainer");
             this.containerA = this.parentContainer.querySelector("#dropA");
             this.containerB = this.parentContainer.querySelector("#dropB");
-            this.containerA.addEventListener("pointerover", this.drop);
-            this.containerB.addEventListener("pointerover", this.drop);
-            this.containerA.addEventListener("pointerup", this.drop);
-            this.containerB.addEventListener("pointerup", this.drop);
+            this.parentContainer.addEventListener("touchmove", this.over);
+            this.parentContainer.addEventListener("touchend", this.drop);
             this.button = this.parentContainer.querySelector("#checkButton");
             this.button.addEventListener("pointerdown", this.check);
             instance = this;
+            this.getRects();
             this.createDrag();
+        }
+        getRects() {
+            let pos = this.containerA.getBoundingClientRect();
+            this.aRect = [pos.x, pos.y, pos.x + pos.width, pos.y + pos.height];
+            let posB = this.containerB.getBoundingClientRect();
+            this.bRect = [posB.x, posB.y, posB.x + posB.width, posB.y + posB.height];
         }
         createDrag() {
             new DragElement(instance.parentContainer.querySelector("#drag1"));
             new DragElement(instance.parentContainer.querySelector("#drag2"));
             new DragElement(instance.parentContainer.querySelector("#drag3"));
         }
+        over(_event) {
+            _event.preventDefault();
+        }
         drop(_event) {
             _event.preventDefault();
-            if (instance.isDragging) {
+            console.log(instance.isDragging);
+            if (instance.isDragging && instance.checkInside(instance.aRect, _event.changedTouches[0].clientX, _event.changedTouches[0].clientY)) {
                 let trigger = instance.parentContainer.querySelector("#" + instance.lastID);
-                //Error Handling: Not allowing wrong drags
-                /* if (trigger.classList.contains("contA") && _event.target.id == "dropA" || trigger.classList.contains("contB") && _event.target.id == "dropB") {
-                    _event.target.appendChild(trigger);
-                } */
-                _event.target.appendChild(trigger);
+                instance.containerA.appendChild(trigger);
+                instance.isDragging = false;
+            }
+            else if ((instance.isDragging && instance.checkInside(instance.bRect, _event.changedTouches[0].clientX, _event.changedTouches[0].clientY))) {
+                let trigger = instance.parentContainer.querySelector("#" + instance.lastID);
+                instance.containerB.appendChild(trigger);
+                console.log("aaaaaaaaaaaaaaaaa");
                 instance.isDragging = false;
             }
         }
@@ -69,6 +82,13 @@ var DragDropTwoBoxes;
                 _ele.classList.remove("wiggle");
             }, 2500);
         }
+        checkInside(_rect, _x, _y) {
+            if (_x > _rect[0] && _x < _rect[2] && _y > _rect[1] && _y < _rect[3]) {
+                return true;
+            }
+            else
+                return false;
+        }
     }
     DragDropTwoBoxes.DragDrop = DragDrop;
     class DragElement {
@@ -78,6 +98,7 @@ var DragDropTwoBoxes;
             this.htmlElement.addEventListener("pointerdown", this.drag);
         }
         drag(_event) {
+            console.log("drag");
             _event.preventDefault();
             instance.lastID = _event.target.id;
             instance.isDragging = true;
