@@ -20,6 +20,8 @@ var DragDropTwoBoxes;
             this.containerB = this.parentContainer.querySelector("#dropB");
             this.containerA.addEventListener("pointerover", this.drop);
             this.containerB.addEventListener("pointerover", this.drop);
+            this.containerA.addEventListener("pointerup", this.drop);
+            this.containerB.addEventListener("pointerup", this.drop);
             this.button = this.parentContainer.querySelector("#checkButton");
             this.button.addEventListener("pointerdown", this.check);
             instance = this;
