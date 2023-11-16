@@ -17,14 +17,16 @@ namespace DragDropTwoBoxes {
         imgcontainer: HTMLDivElement;
 
 
+        lastID: string;
+        isDragging: boolean = false;
+
+
         constructor() {
             this.parentContainer = <HTMLDivElement>document.querySelector("#dragdropContainer");
             this.containerA = <HTMLDivElement>this.parentContainer.querySelector("#dropA");
             this.containerB = <HTMLDivElement>this.parentContainer.querySelector("#dropB");
-            this.containerA.addEventListener("dragover", this.allowDrop);
-            this.containerA.addEventListener("drop", this.drop);
-            this.containerB.addEventListener("dragover", this.allowDrop);
-            this.containerB.addEventListener("drop", this.drop);
+            this.containerA.addEventListener("pointerover", this.drop);
+            this.containerB.addEventListener("pointerover", this.drop);
             this.button = <HTMLButtonElement>this.parentContainer.querySelector("#checkButton");
             this.button.addEventListener("pointerdown", this.check);
             instance = this;
@@ -38,21 +40,19 @@ namespace DragDropTwoBoxes {
             new DragElement(<HTMLElement>instance.parentContainer.querySelector("#drag3"))
         }
 
-        allowDrop(_event: Event): void {
-            _event.preventDefault();
-        }
-
         drop(_event: any) {
             _event.preventDefault();
-            let data = _event.dataTransfer.getData("text");
-            let trigger: HTMLElement = <HTMLElement>instance.parentContainer.querySelector("#" + data)
+            if (instance.isDragging) {
+                let trigger: HTMLElement = <HTMLElement>instance.parentContainer.querySelector("#" + instance.lastID)
 
-            //Error Handling: Not allowing wrong drags
-            /* if (trigger.classList.contains("contA") && _event.target.id == "dropA" || trigger.classList.contains("contB") && _event.target.id == "dropB") {
+                //Error Handling: Not allowing wrong drags
+                /* if (trigger.classList.contains("contA") && _event.target.id == "dropA" || trigger.classList.contains("contB") && _event.target.id == "dropB") {
+                    _event.target.appendChild(trigger);
+                } */
+
                 _event.target.appendChild(trigger);
-            } */
-
-            _event.target.appendChild(trigger);
+                instance.isDragging = false; 
+            }
         }
 
         check(): void {
@@ -72,7 +72,7 @@ namespace DragDropTwoBoxes {
             for (let ele of allBchildren) {
                 if (ele.classList.contains("contA")) {
                     instance.parentContainer.appendChild(ele);
-                    instance.timeoutWiggle(ele); 
+                    instance.timeoutWiggle(ele);
                 }
             }
         }
@@ -91,11 +91,12 @@ namespace DragDropTwoBoxes {
 
         constructor(_ele: HTMLElement) {
             this.htmlElement = _ele;
-            this.htmlElement.addEventListener("dragstart", this.drag);
+            this.htmlElement.addEventListener("pointerdown", this.drag);
         }
 
         drag(_event: any) {
-            _event.dataTransfer.setData("text", _event.target.id);
+            instance.lastID = _event.target.id;
+            instance.isDragging = true;
         }
     }
 }
