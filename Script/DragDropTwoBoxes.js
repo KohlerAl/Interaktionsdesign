@@ -16,10 +16,12 @@ var DragDropTwoBoxes;
         isDragging = false;
         aRect = [];
         bRect = [];
+        mouseMover;
         constructor() {
             this.parentContainer = document.querySelector("#dragdropContainer");
             this.containerA = this.parentContainer.querySelector("#dropA");
             this.containerB = this.parentContainer.querySelector("#dropB");
+            this.mouseMover = document.querySelector("#touchMover");
             this.parentContainer.addEventListener("touchmove", this.over);
             this.parentContainer.addEventListener("touchend", this.drop);
             this.button = this.parentContainer.querySelector("#checkButton");
@@ -41,19 +43,24 @@ var DragDropTwoBoxes;
         }
         over(_event) {
             _event.preventDefault();
+            instance.mouseMover.style.top = _event.changedTouches[0].clientY + 10 + "px";
+            instance.mouseMover.style.left = _event.changedTouches[0].clientX + 10 + "px";
         }
         drop(_event) {
             _event.preventDefault();
-            console.log(instance.isDragging);
+            instance.mouseMover.style.display = "none";
+            let trigger = instance.parentContainer.querySelector("#" + instance.lastID);
+            console.log(trigger);
             if (instance.isDragging && instance.checkInside(instance.aRect, _event.changedTouches[0].clientX, _event.changedTouches[0].clientY)) {
-                let trigger = instance.parentContainer.querySelector("#" + instance.lastID);
                 instance.containerA.appendChild(trigger);
                 instance.isDragging = false;
             }
             else if ((instance.isDragging && instance.checkInside(instance.bRect, _event.changedTouches[0].clientX, _event.changedTouches[0].clientY))) {
-                let trigger = instance.parentContainer.querySelector("#" + instance.lastID);
                 instance.containerB.appendChild(trigger);
-                console.log("aaaaaaaaaaaaaaaaa");
+                instance.isDragging = false;
+            }
+            else if (instance.isDragging) {
+                instance.imgcontainer.appendChild(trigger);
                 instance.isDragging = false;
             }
         }
@@ -95,13 +102,17 @@ var DragDropTwoBoxes;
         htmlElement;
         constructor(_ele) {
             this.htmlElement = _ele;
-            this.htmlElement.addEventListener("pointerdown", this.drag);
+            this.htmlElement.addEventListener("touchstart", this.drag);
         }
         drag(_event) {
-            console.log("drag");
             _event.preventDefault();
-            instance.lastID = _event.target.id;
+            instance.mouseMover.style.display = "block";
+            let target = _event.target;
+            instance.lastID = target.id;
             instance.isDragging = true;
+            instance.mouseMover.style.top = _event.changedTouches[0].clientY + 10 + "px";
+            instance.mouseMover.style.left = _event.changedTouches[0].clientX + 10 + "px";
+            instance.mouseMover.appendChild(document.querySelector("#" + target.id));
         }
     }
     DragDropTwoBoxes.DragElement = DragElement;

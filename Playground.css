@@ -1,10 +1,21 @@
 /* Animations */
 
 @keyframes wiggle {
-   0% { transform: rotate(0deg); }
-   25% { transform: rotate(5deg); }
-   50% { transform: rotate(-5deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(5deg);
+  }
+
+  50% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .wiggle {
@@ -24,8 +35,29 @@ div {
   height: 150px;
 }
 
-#multipleChoice, #dragdropBox, #dragdropContainer {
+#multipleChoice,
+#dragdropBox,
+#dragdropContainer {
   display: block;
+}
+
+#touchMover {
+  position: fixed;
+  display: none;
+  width: 150px;
+  height: 150px;
+}
+
+.rightAnswer {
+  background-color: green;
+}
+
+.wrongAnswer {
+  background-color: red;
+}
+
+.hint {
+  background-color: lightgreen;
 }
 
 
@@ -34,4 +66,11 @@ div {
 img {
   width: 100px;
   height: 100px;
+}
+
+/* Canvas */
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

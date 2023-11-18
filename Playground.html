@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playground</title>
-    <script src="Script/DragDropTwoBoxes.js"></script>
-    <!-- script src="Script/DragDropFourBoxes.js"></script> -->
+    <!-- <script src="Script/DragDropTwoBoxes.js"></script> -->
+    <!-- <script src="Script/DragDropFourBoxes.js"></script> -->
+    <!-- <script src="Script/Question.js"></script> -->
+    <script src="Script/FishGame.js"></script>
     <link rel="stylesheet" href="Playground.css">
 </head>
 
 <body>
-
-    <div id="dragdropContainer">
+    <!-- <div id="dragdropContainer">
+        <div id="touchMover"></div>
         <h1>Drag and Drop 2 Boxes (Several images in one box)</h1>
         <p>The ghost and the duck belong in the first box, the heart in the second.</p>
         <div id="dropA" style="height: 150px; width: 300px; border: 1px solid black">
@@ -26,14 +28,14 @@
             <img src="img/duck.jpg" id="drag2" class="contA" >
             <img src="img/heart.jpg" id="drag3" class="contB" >
         </div>
-    </div>
+    </div> 
+    
 
 
-    <!-- <div id="dragdropBox">
+    <div id="dragdropBox">
         <h1>Drag and Drop 4 Boxes (1 Image per box)</h1>
-        <p>The images belong in the boxes in order of appearance
-
-        </p>
+        <p>The images belong in the boxes in order of appearance</p>
+        <div id="touchMover"></div>
         <div id="drop1" style="height: 150px; width: 150px; border: 1px solid black"></div>
         <div id="drop2" style="height: 150px; width: 150px; border: 1px solid forestgreen"></div>
         <div id="drop3" style="height: 150px; width: 150px; border: 1px solid aqua"></div>
@@ -47,9 +49,9 @@
             <img src="img/dino.jpg" id="dragD" class="contD" >
         </div>
 
-    </div>
-
-    <div id="multipleChoice">
+    </div>-->
+ 
+    <!-- <div id="multipleChoice">
         <h1>Multiple Choice mit 2-4 Antwortmöglichkeiten</h1>
         <p>Das ist eine Frage</p>
 
@@ -66,6 +68,10 @@
             <p>Das ist eine falsche Antwort</p>
         </div>
     </div> -->
+
+    <div id="gameContainer">
+        <canvas></canvas>
+    </div>
 </body>
 
 </html>
