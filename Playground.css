@@ -60,6 +60,10 @@ div {
   background-color: lightgreen;
 }
 
+#imageBox {
+  display: none;
+}
+
 
 /* Images */
 
