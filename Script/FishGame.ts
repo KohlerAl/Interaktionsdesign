@@ -203,6 +203,7 @@ namespace Fishgame {
         constructor() {
             this.xPos = width;
             this.update();
+            
         }
 
         update(): void {

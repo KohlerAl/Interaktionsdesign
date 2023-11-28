@@ -1,0 +1,296 @@
+/* Fonts */
+@font-face {
+    font-family: "extrabold";
+    src: url(fonts/Dosis-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: "semibold";
+    src: url(fonts/Dosis-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: "regular";
+    src: url(fonts/Dosis-Regular.ttf);
+}
+
+
+/* Colors */
+
+:root {
+    --darkBrown: "#45241B";
+    --fur: "#8C5C4A";
+    --tummy: "#FBEACE";
+    --right: "#559A64";
+    --wrong: "#C08497";
+    --fishy: "#EFB95F";
+    --darkFishy: "#C08497";
+}
+
+/* Animations */
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.wiggle {
+    display: inline-block;
+    animation: wiggle 2.5s infinite;
+}
+
+
+/* Tags */
+h1 {
+    font-family: "extrabold";
+    font-size: 55px;
+    color: #FBEAce;
+    text-align: center;
+}
+
+h2 {
+    font-family: "extrabold";
+    font-size: 40px;
+}
+
+h3 {
+    font-family: "semibold";
+    font-size: 32px;
+}
+
+h4 {
+    font-family: "semibold";
+    font-size: 24px;
+}
+
+body {
+    background-color: #45241B;
+    color: #FBEAce;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    font-family: "extrabold";
+    color: #FBEAce
+}
+
+a:visited {
+    color: #FBEAce
+}
+
+p {
+    font-family: "regular";
+}
+
+/* Classes */
+.bigPara {
+    font-family: "regular";
+    font-size: 24px;
+}
+
+.smallPara {
+    font-family: "regular";
+    font-size: 20px;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+.charlie {
+    max-width: 320px;
+    max-height: 175px;
+    margin: auto;
+    display: block;
+}
+
+.charlieSmall {
+    max-width: 120px;
+    margin: auto;
+    display: block;
+    margin-top: 15px;
+}
+
+.startButton {
+    margin: auto;
+    display: block;
+    background-color: #559A64;
+    text-align: center;
+    width: 180px;
+    height: 55px;
+    border-radius: 30px;
+}
+
+.startButton p {
+    font-size: 30px;
+    line-height: 55px;
+    color: #FBEAce;
+}
+
+.Bigbutton {
+    margin: auto;
+    display: block;
+    width: 200px;
+    height: 90px;
+    border-radius: 10px;
+    background-color: #559A64;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.Bigbutton p {
+    font-size: 45px;
+    line-height: 90px;
+}
+
+.contentWrapper {
+    background-color: #8C5C4A;
+    padding-top: 5px;
+}
+
+.contentWrapper p 
+.contentWrapper button {
+    padding: 0 20px;
+}
+
+.feedbackBtn {
+    color: #FBEAce;
+    margin: auto;
+    display: block;
+    width: 300px;
+    border: none;
+    min-height: 60px;
+    font-size: 20px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+
+.right {
+    background-color: #559A64;
+}
+
+.wrong {
+    background-color: #C08497;
+}
+
+.next {
+    background-color: #45241B;
+    border-radius: 50px;
+    position: absolute;
+    right: 5px;
+}
+
+/* .contentWrapper .next {
+    margin-top: 15px;
+}
+
+.scoreWrapper .next {
+    margin-top: -15px;
+
+} */
+
+.scoreWrapper {
+    background-color: #8C5C4A;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    position: absolute;
+
+}
+
+.scoreWrapper h3 {
+    margin: 0;
+}
+
+.scoreWrapper>div {
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/* IDs */
+#station1 {
+    padding: 0 20px;
+    margin: 5px 0 5px 0;
+}
+
+#brend {
+    margin: auto;
+    display: block;
+    width: 370px;
+}
+
+#score {
+    font-family: "extrabold";
+    color: #559A64;
+    font-size: 100px;
+    margin-top: 30px;
+}
+
+
+/* ProgressBar */
+
+.scoreWrapper progress[value] {
+    --color: #FBEAce;
+    /* the progress color */
+    --background: #8C5C4A;
+    /* the background color */
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid#45241B;
+    width: 90%;
+    margin: 0 10px;
+    border-radius: 10em;
+    background: var(--background);
+    position: absolute;
+  
+    left: 2%;
+}
+
+progress[value] {
+    --color: #FBEAce;
+    /* the progress color */
+    --background: #8C5C4A;
+    /* the background color */
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid#45241B;
+    width: 90%;
+    margin: 0 10px;
+    border-radius: 10em;
+    background: var(--background);
+    position: absolute;
+    left: 2%;
+}
+
+progress[value]::-webkit-progress-bar {
+    border-radius: 10em;
+    background: var(--background);
+}
+
+progress[value]::-webkit-progress-value {
+    border-radius: 10em;
+    background: var(--color);
+}
+
+progress[value]::-moz-progress-bar {
+    border-radius: 10em;
+    background: var(--color);
+}
