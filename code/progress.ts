@@ -6,6 +6,6 @@ namespace Progress {
         prog.style.top = window.innerHeight - 30 + "px"; 
 
         let next: HTMLElement = <HTMLElement>document.querySelector(".next"); 
-        next.style.top = window.innerHeight - 70 + "px"; 
+        next.style.top = window.innerHeight - 75 + "px"; 
     }
 }

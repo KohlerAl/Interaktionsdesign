@@ -160,8 +160,7 @@ p {
     padding-top: 5px;
 }
 
-.contentWrapper p 
-.contentWrapper button {
+.contentWrapper p .contentWrapper button {
     padding: 0 20px;
 }
 
@@ -185,21 +184,29 @@ p {
     background-color: #C08497;
 }
 
+.florian {
+    background-color: #EFB95F;
+}
+
 .next {
     background-color: #45241B;
     border-radius: 50px;
     position: absolute;
     right: 5px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
 }
 
-/* .contentWrapper .next {
-    margin-top: 15px;
+.next img {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
 }
 
-.scoreWrapper .next {
-    margin-top: -15px;
-
-} */
+.hideImages {
+    display: none;
+}
 
 .scoreWrapper {
     background-color: #8C5C4A;
@@ -227,10 +234,15 @@ p {
     margin: 5px 0 5px 0;
 }
 
-#brend {
+#brend,
+#map {
     margin: auto;
     display: block;
     width: 370px;
+}
+
+#map {
+    height: 250px;
 }
 
 #score {
@@ -258,7 +270,7 @@ p {
     border-radius: 10em;
     background: var(--background);
     position: absolute;
-  
+
     left: 2%;
 }
 
