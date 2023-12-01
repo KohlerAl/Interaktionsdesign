@@ -160,7 +160,7 @@ p {
     padding-top: 5px;
 }
 
-.contentWrapper p .contentWrapper button {
+.contentWrapper p,  .contentWrapper button {
     padding: 0 20px;
 }
 
@@ -177,11 +177,11 @@ p {
 }
 
 .right {
-    background-color: #559A64;
+    background-color: #559A64 !important;
 }
 
 .wrong {
-    background-color: #C08497;
+    background-color: #C08497 !important;
 }
 
 .florian {
@@ -227,6 +227,27 @@ p {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
+.questionWrapper {
+    text-align: center ;
+    margin-top: 55px;
+}
+
+.questionWrapper > h4 {
+    height: 105px;
+}
+
+.answer {
+    height: 65px;
+    border-radius: 30px;
+    background-color: #EFB95F;
+    color: #45241B;
+    border: none;
+    width: 150px;
+    margin: 0 10px;
+    font-size: 25px;
+}
+
 
 /* IDs */
 #station1 {
