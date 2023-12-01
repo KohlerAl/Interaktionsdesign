@@ -49,10 +49,10 @@ namespace Station2_1 {
         /* crc.fillStyle = "white"; 
         crc.fillRect(0, 0, 370, 185); */
         crc.drawImage(mapImage, -350, 0, 740 * 1.5 , 500 * 1.5);
-        crc.drawImage(pink, -350, 0, 740 * 1.5 , 500 * 1.5);
+        /* crc.drawImage(pink, -350, 0, 740 * 1.5 , 500 * 1.5);
         crc.drawImage(beige, -350, 0, 740 * 1.5 , 500 * 1.5);
         crc.drawImage(green, -350, 0, 740 * 1.5 , 500 * 1.5);
-        crc.drawImage(brown, -350, 0, 740 * 1.5 , 500 * 1.5);
+        crc.drawImage(brown, -350, 0, 740 * 1.5 , 500 * 1.5); */
         /* 
         crc.drawImage(mapImage, -0, 0, 740, 500); */
 
