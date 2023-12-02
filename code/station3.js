@@ -10,6 +10,7 @@ var station3;
     let next;
     let imgcontainer;
     let instance;
+    let currentOff = 0;
     function handleLoad() {
         dragDrop = document.querySelector("#dragdropContainer");
         dragA = document.querySelector("#dropA");
@@ -95,10 +96,11 @@ var station3;
             instance = this;
             this.getRects();
             this.createDrag();
-            console.log(this.imgcontainer.getBoundingClientRect().width / 8);
             let allCchildren = this.imgcontainer.querySelectorAll("img");
             for (let child of allCchildren) {
-                console.log(child.getBoundingClientRect().width);
+                child.style.left = currentOff.toFixed(2) + "px";
+                child.setAttribute("value", currentOff.toFixed(2) + "");
+                currentOff += child.getBoundingClientRect().width + 4;
             }
         }
         getRects() {
@@ -130,25 +132,31 @@ var station3;
             _event.preventDefault();
             instance.mouseMover.style.display = "none";
             let trigger = instance.parentContainer.querySelector("#" + instance.lastID);
-            console.log(trigger);
             if (instance.isDragging && instance.checkInside(instance.aRect, _event.changedTouches[0].clientX, _event.changedTouches[0].clientY)) {
                 instance.containerA.appendChild(trigger);
+                trigger.style.position = "unset";
                 instance.isDragging = false;
             }
             else if ((instance.isDragging && instance.checkInside(instance.bRect, _event.changedTouches[0].clientX, _event.changedTouches[0].clientY))) {
                 instance.containerB.appendChild(trigger);
+                trigger.style.position = "unset";
                 instance.isDragging = false;
             }
             else if ((instance.isDragging && instance.checkInside(instance.cRect, _event.changedTouches[0].clientX, _event.changedTouches[0].clientY))) {
                 instance.containerC.appendChild(trigger);
+                trigger.style.position = "unset";
                 instance.isDragging = false;
             }
             else if ((instance.isDragging && instance.checkInside(instance.dRect, _event.changedTouches[0].clientX, _event.changedTouches[0].clientY))) {
                 instance.containerD.appendChild(trigger);
+                trigger.style.position = "unset";
                 instance.isDragging = false;
             }
             else if (instance.isDragging) {
                 instance.imgcontainer.appendChild(trigger);
+                let off = trigger.getAttribute("value");
+                trigger.style.left = off + "px";
+                trigger.style.position = "absolute";
                 instance.isDragging = false;
             }
             if (instance.imgcontainer.children.length == 0) {
@@ -163,6 +171,11 @@ var station3;
             for (let ele of allAchildren) {
                 if (ele.classList.contains("contB") || ele.classList.contains("contC") || ele.classList.contains("contD")) {
                     instance.imgcontainer.appendChild(ele);
+                    if (ele instanceof HTMLElement) {
+                        let off = ele.getAttribute("value");
+                        ele.style.left = off + "px";
+                        ele.style.position = "absolute";
+                    }
                     instance.timeoutWiggle(ele);
                 }
             }
@@ -170,6 +183,11 @@ var station3;
             for (let ele of allBchildren) {
                 if (ele.classList.contains("contA") || ele.classList.contains("contC") || ele.classList.contains("contD")) {
                     instance.imgcontainer.appendChild(ele);
+                    if (ele instanceof HTMLElement) {
+                        let off = ele.getAttribute("value");
+                        ele.style.left = off + "px";
+                        ele.style.position = "absolute";
+                    }
                     instance.timeoutWiggle(ele);
                 }
             }
@@ -177,6 +195,11 @@ var station3;
             for (let ele of allCchildren) {
                 if (ele.classList.contains("contA") || ele.classList.contains("contB") || ele.classList.contains("contD")) {
                     instance.imgcontainer.appendChild(ele);
+                    if (ele instanceof HTMLElement) {
+                        let off = ele.getAttribute("value");
+                        ele.style.left = off + "px";
+                        ele.style.position = "absolute";
+                    }
                     instance.timeoutWiggle(ele);
                 }
             }
@@ -184,6 +207,11 @@ var station3;
             for (let ele of allDchildren) {
                 if (ele.classList.contains("contA") || ele.classList.contains("contB") || ele.classList.contains("contC")) {
                     instance.imgcontainer.appendChild(ele);
+                    if (ele instanceof HTMLElement) {
+                        let off = ele.getAttribute("value");
+                        ele.style.left = off + "px";
+                        ele.style.position = "absolute";
+                    }
                     instance.timeoutWiggle(ele);
                 }
             }
@@ -217,7 +245,9 @@ var station3;
             instance.isDragging = true;
             instance.mouseMover.style.top = _event.changedTouches[0].clientY + 10 + "px";
             instance.mouseMover.style.left = _event.changedTouches[0].clientX + 10 + "px";
-            instance.mouseMover.appendChild(document.querySelector("#" + target.id));
+            let dragged = document.querySelector("#" + target.id);
+            instance.mouseMover.appendChild(dragged);
+            dragged.style.left = "0px";
         }
     }
     station3_1.DragElement = DragElement;

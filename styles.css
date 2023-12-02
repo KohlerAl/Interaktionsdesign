@@ -298,7 +298,9 @@ label {
 
 #imgContainer {
     position: absolute;
-    width: 100%;
+    width: 335px;
+    left: 50%;
+    transform: translate(-50%, -5%);
 }
 
 #dropA img,
@@ -308,12 +310,13 @@ label {
     margin: 5px;
 }
 
-.contA, 
-.contB, 
-.contC, 
+.contA,
+.contB,
+.contC,
 .contD {
     max-width: 45px;
     max-height: 45px;
+    position: absolute;
 }
 
 /* #dropB,
