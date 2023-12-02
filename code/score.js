@@ -10,6 +10,8 @@ var score;
         div.style.height = window.innerHeight + "px";
         document.body.style.margin = 0 + "px";
         let current = Number(localStorage.getItem("current"));
+        let progress = document.querySelector("progress");
+        progress.setAttribute("value", "." + current);
         current++;
         console.log(current);
         let a = document.querySelector(".next");

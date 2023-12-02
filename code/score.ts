@@ -12,6 +12,8 @@ namespace score {
         document.body.style.margin = 0 + "px";
 
         let current: number = Number(localStorage.getItem("current"));
+        let progress: HTMLProgressElement = <HTMLProgressElement>document.querySelector("progress"); 
+        progress.setAttribute("value", "." + current); 
         current++; 
         console.log(current)
 

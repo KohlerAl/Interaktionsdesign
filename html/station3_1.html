@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlies Abenteuer</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../code/station3.js"></script>
+    <script src="../code/progress.js"></script>
+    <link rel="icon" href="../img/Haselnuss.PNG" type="image/x-icon">
+</head>
+
+<body>
+    <h2 id="station1">Charlie in den Baumwipfeln</h2>
+
+    <div class="contentWrapper">
+        <p class="smallPara">Ich lebe ganz oben in den Baumwipfeln. Weißt du welche Baumarten es hier
+            in der Gegend gibt? Ordne die Blätter und Zapfen der richtigen Baumart zu.</p>
+
+        <div id="dragdropContainer">
+            <div id="touchMover"></div>
+            <div id="dropA"></div>
+
+            <div id="dropB"></div>
+
+            <div id="dropC"></div>
+
+            <div id="dropD"></div>
+
+            <div id="imgContainer">
+                <img src="../img/BucheBlatt.png" id="drag1" class="contD">
+                <img src="../img/Fichetnnadeln2.png" id="drag2" class="contC">
+                <img src="../img/Tannenzweig.png" id="drag3" class="contB">
+                <img src="../img/Fichetnzapfen.png" id="drag4" class="contC">
+                <img src="../img/Eichel.png" id="drag5" class="contA">
+                <img src="../img/Buchecker.png" id="drag6" class="contD">
+                <img src="../img/Tannenzapfen.png" id="drag7" class="contB">
+                <img src="../img/EicheBlatt.png" id="drag8" class="contA">
+            </div>
+
+            <label id="a" for="dropA">Eiche</label>
+            <label id="b" for="dropB">Tanne</label>
+            <label id="c" for="dropC">Fichte</label>
+            <label id="d" for="dropD">Buche</label>
+        </div>
+
+        <a href="score.html" class="next"><img src="../img/arrow.png"></a>
+        <label><progress value=".2" max="1"></progress> </label>
+    </div>
+</body>
+
+</html>

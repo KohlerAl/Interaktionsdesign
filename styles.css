@@ -96,6 +96,10 @@ p {
     font-family: "regular";
 }
 
+label {
+    font-family: "regular";
+}
+
 /* Classes */
 .bigPara {
     font-family: "regular";
@@ -106,7 +110,8 @@ p {
     font-family: "regular";
     font-size: 20px;
     text-align: center;
-    padding: 5px 10px;
+    padding: 5px;
+    margin-top: 10px;
 }
 
 .charlie {
@@ -160,7 +165,8 @@ p {
     padding-top: 5px;
 }
 
-.contentWrapper p,  .contentWrapper button {
+.contentWrapper p,
+.contentWrapper button {
     padding: 0 20px;
 }
 
@@ -229,11 +235,11 @@ p {
 }
 
 .questionWrapper {
-    text-align: center ;
+    text-align: center;
     margin-top: 55px;
 }
 
-.questionWrapper > h4 {
+.questionWrapper>h4 {
     height: 105px;
 }
 
@@ -274,6 +280,70 @@ p {
     margin-top: 30px;
 }
 
+#dragdropContainer {
+    margin: 0 10px;
+    position: relative;
+}
+
+#dropA,
+#dropB,
+#dropC,
+#dropD {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #FBEAce;
+    margin: 0 15px;
+    position: absolute;
+}
+
+#imgContainer {
+    position: absolute;
+    width: 100%;
+}
+
+#dropA img,
+#dropB img,
+#dropC img,
+#dropD img {
+    margin: 5px;
+}
+
+.contA, 
+.contB, 
+.contC, 
+.contD {
+    max-width: 45px;
+    max-height: 45px;
+}
+
+/* #dropB,
+#dropD {
+    left: 165px;
+    position: absolute;
+} */
+
+#dragdropContainer label {
+    margin: 0 15px;
+}
+
+label#a,
+label#b,
+label#c,
+label#d {
+    position: absolute;
+    background-color: #FBEAce;
+    color: #45241B;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 5px;
+}
+
+#touchMover {
+    position: fixed;
+    display: none;
+    width: 150px;
+    height: 150px;
+}
 
 /* ProgressBar */
 

@@ -98,13 +98,13 @@ var Station2_2;
                 final();
                 break;
         }
-        function final() {
-            let station1 = Number(localStorage.getItem("station1"));
-            let station2 = Number(localStorage.getItem("station2"));
-            let station22 = Number(localStorage.getItem("station22"));
-            localStorage.setItem("points", station1 + station2 + station22 + "");
-            console.log(localStorage.getItem("points"));
-        }
+    }
+    function final() {
+        let station1 = Number(localStorage.getItem("station1"));
+        let station2 = Number(localStorage.getItem("station2"));
+        let station22 = Number(localStorage.getItem("station22"));
+        localStorage.setItem("points", station1 + station2 + station22 + "");
+        localStorage.setItem("current", "2");
     }
 })(Station2_2 || (Station2_2 = {}));
 //# sourceMappingURL=station2_2.js.map

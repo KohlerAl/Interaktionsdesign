@@ -122,16 +122,18 @@ namespace Station2_2 {
 
             case 5:
                 next.setAttribute("href", "score.html");
-                final(); 
+                final();
                 break;
         }
 
-        function final(): void {
-            let station1: number = Number(localStorage.getItem("station1"));
-            let station2: number = Number(localStorage.getItem("station2"));
-            let station22: number = Number(localStorage.getItem("station22"));
-            localStorage.setItem("points", station1 + station2 + station22 + "");
-            console.log(localStorage.getItem("points"))
-        }
+
+    }
+
+    function final(): void {
+        let station1: number = Number(localStorage.getItem("station1"));
+        let station2: number = Number(localStorage.getItem("station2"));
+        let station22: number = Number(localStorage.getItem("station22"));
+        localStorage.setItem("points", station1 + station2 + station22 + "");
+        localStorage.setItem("current", "2");
     }
 }
