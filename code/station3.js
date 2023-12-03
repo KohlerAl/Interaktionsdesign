@@ -11,6 +11,11 @@ var station3;
     let imgcontainer;
     let instance;
     let currentOff = 0;
+    let labelA;
+    let labelB;
+    let labelC;
+    let labelD;
+    let fbBtn;
     function handleLoad() {
         dragDrop = document.querySelector("#dragdropContainer");
         dragA = document.querySelector("#dropA");
@@ -21,6 +26,8 @@ var station3;
         div.style.height = window.innerHeight + "px";
         document.body.style.marginLeft = 0 + "px";
         document.body.style.marginRight = 0 + "px";
+        fbBtn = document.querySelector(".feedbackBtn");
+        fbBtn.style.display = "none";
         next = document.querySelector(".next");
         next.style.display = "none";
         localStorage.setItem("station3", "0");
@@ -47,10 +54,10 @@ var station3;
         dragD.style.top = width / 3 + 20 + "px";
         imgcontainer = document.querySelector("#imgContainer");
         imgcontainer.style.top = contwidth * 2 + 80 + "px";
-        let labelA = document.querySelector("#a");
-        let labelB = document.querySelector("#b");
-        let labelC = document.querySelector("#c");
-        let labelD = document.querySelector("#d");
+        labelA = document.querySelector("#a");
+        labelB = document.querySelector("#b");
+        labelC = document.querySelector("#c");
+        labelD = document.querySelector("#d");
         labelA.style.left = contwidth - 25 + "px";
         labelB.style.left = contwidth * 2 - 15 + "px";
         labelC.style.left = contwidth - 25 + "px";
@@ -64,6 +71,7 @@ var station3;
         let station1 = Number(localStorage.getItem("station1"));
         let station2 = Number(localStorage.getItem("station2"));
         let station22 = Number(localStorage.getItem("station22"));
+        next.style.display = "block";
         localStorage.setItem("points", station1 + station2 + station22 + 15 + "");
         localStorage.setItem("current", "3");
     }
@@ -161,56 +169,64 @@ var station3;
             if (instance.imgcontainer.children.length == 0) {
                 instance.check();
                 if (instance.imgcontainer.children.length == 0) {
+                    instance.changeClasses("right");
                     final();
                 }
             }
         }
         check() {
-            let allAchildren = instance.containerA.children;
-            for (let ele of allAchildren) {
+            let allAchildren = this.containerA.childNodes;
+            let arrA = Array.from(allAchildren);
+            for (let i = 0; i < arrA.length; i++) {
+                let ele = arrA[i];
                 if (ele.classList.contains("contB") || ele.classList.contains("contC") || ele.classList.contains("contD")) {
                     instance.imgcontainer.appendChild(ele);
-                    if (ele instanceof HTMLElement) {
-                        let off = ele.getAttribute("value");
-                        ele.style.left = off + "px";
-                        ele.style.position = "absolute";
-                    }
+                    instance.changeClasses("wrong");
+                    let off = ele.getAttribute("value");
+                    ele.style.left = off + "px";
+                    ele.style.position = "absolute";
                     instance.timeoutWiggle(ele);
                 }
             }
-            let allBchildren = instance.containerB.children;
-            for (let ele of allBchildren) {
+            let allBchildren = instance.containerB.childNodes;
+            let arrB = Array.from(allBchildren);
+            for (let i = 0; i < arrB.length; i++) {
+                console.log("b");
+                let ele = arrB[i];
                 if (ele.classList.contains("contA") || ele.classList.contains("contC") || ele.classList.contains("contD")) {
                     instance.imgcontainer.appendChild(ele);
-                    if (ele instanceof HTMLElement) {
-                        let off = ele.getAttribute("value");
-                        ele.style.left = off + "px";
-                        ele.style.position = "absolute";
-                    }
+                    instance.changeClasses("wrong");
+                    let off = ele.getAttribute("value");
+                    ele.style.left = off + "px";
+                    ele.style.position = "absolute";
                     instance.timeoutWiggle(ele);
                 }
             }
-            let allCchildren = instance.containerC.children;
-            for (let ele of allCchildren) {
+            let allCchildren = instance.containerC.childNodes;
+            let arrC = Array.from(allCchildren);
+            for (let i = 0; i < arrC.length; i++) {
+                console.log("c");
+                let ele = arrC[i];
                 if (ele.classList.contains("contA") || ele.classList.contains("contB") || ele.classList.contains("contD")) {
                     instance.imgcontainer.appendChild(ele);
-                    if (ele instanceof HTMLElement) {
-                        let off = ele.getAttribute("value");
-                        ele.style.left = off + "px";
-                        ele.style.position = "absolute";
-                    }
+                    instance.changeClasses("wrong");
+                    let off = ele.getAttribute("value");
+                    ele.style.left = off + "px";
+                    ele.style.position = "absolute";
                     instance.timeoutWiggle(ele);
                 }
             }
-            let allDchildren = instance.containerD.children;
-            for (let ele of allDchildren) {
+            let allDchildren = instance.containerD.childNodes;
+            let arrD = Array.from(allDchildren);
+            for (let i = 0; i < arrD.length; i++) {
+                console.log("d");
+                let ele = arrD[i];
                 if (ele.classList.contains("contA") || ele.classList.contains("contB") || ele.classList.contains("contC")) {
                     instance.imgcontainer.appendChild(ele);
-                    if (ele instanceof HTMLElement) {
-                        let off = ele.getAttribute("value");
-                        ele.style.left = off + "px";
-                        ele.style.position = "absolute";
-                    }
+                    instance.changeClasses("wrong");
+                    let off = ele.getAttribute("value");
+                    ele.style.left = off + "px";
+                    ele.style.position = "absolute";
                     instance.timeoutWiggle(ele);
                 }
             }
@@ -227,6 +243,36 @@ var station3;
             }
             else
                 return false;
+        }
+        changeClasses(_class) {
+            switch (_class) {
+                case "right":
+                    if (labelA.classList.contains("wrong"))
+                        labelA.classList.remove("wrong");
+                    if (labelB.classList.contains("wrong"))
+                        labelB.classList.remove("wrong");
+                    if (labelC.classList.contains("wrong"))
+                        labelC.classList.remove("wrong");
+                    if (labelD.classList.contains("wrong"))
+                        labelD.classList.remove("wrong");
+                    if (fbBtn.classList.contains("wrong"))
+                        fbBtn.classList.remove("wrong");
+                    labelA.classList.add("right");
+                    labelB.classList.add("right");
+                    labelC.classList.add("right");
+                    labelD.classList.add("right");
+                    fbBtn.classList.add("right");
+                    fbBtn.innerHTML = "Super, du hast alle richtig zugeordnet!";
+                    break;
+                case "wrong":
+                    labelA.classList.add("wrong");
+                    labelB.classList.add("wrong");
+                    labelC.classList.add("wrong");
+                    labelD.classList.add("wrong");
+                    fbBtn.classList.add("wrong");
+                    fbBtn.innerHTML = "Das stimmt leider nicht, schau dir die Bäume nochmal genauer an.";
+                    break;
+            }
         }
     }
     station3.DragDrop = DragDrop;

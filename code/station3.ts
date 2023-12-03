@@ -13,10 +13,12 @@ namespace station3 {
 
     let currentOff: number = 0;
 
-    let labelA: HTMLLabelElement; 
-    let labelB: HTMLLabelElement; 
-    let labelC: HTMLLabelElement; 
-    let labelD: HTMLLabelElement; 
+    let labelA: HTMLLabelElement;
+    let labelB: HTMLLabelElement;
+    let labelC: HTMLLabelElement;
+    let labelD: HTMLLabelElement;
+
+    let fbBtn: HTMLButtonElement;
 
     function handleLoad(): void {
         dragDrop = <HTMLDivElement>document.querySelector("#dragdropContainer");
@@ -29,6 +31,9 @@ namespace station3 {
         div.style.height = window.innerHeight + "px";
         document.body.style.marginLeft = 0 + "px";
         document.body.style.marginRight = 0 + "px";
+
+        fbBtn = <HTMLButtonElement>document.querySelector(".feedbackBtn");
+        fbBtn.style.display = "none";
 
         next = <HTMLAnchorElement>document.querySelector(".next");
         next.style.display = "none";
@@ -66,7 +71,7 @@ namespace station3 {
         imgcontainer = <HTMLDivElement>document.querySelector("#imgContainer");
         imgcontainer.style.top = contwidth * 2 + 80 + "px";
 
-        labelA =  <HTMLLabelElement>document.querySelector("#a");
+        labelA = <HTMLLabelElement>document.querySelector("#a");
         labelB = <HTMLLabelElement>document.querySelector("#b");
         labelC = <HTMLLabelElement>document.querySelector("#c");
         labelD = <HTMLLabelElement>document.querySelector("#d");
@@ -87,6 +92,7 @@ namespace station3 {
         let station1: number = Number(localStorage.getItem("station1"));
         let station2: number = Number(localStorage.getItem("station2"));
         let station22: number = Number(localStorage.getItem("station22"));
+        next.style.display = "block";
         localStorage.setItem("points", station1 + station2 + station22 + 15 + "");
         localStorage.setItem("current", "3");
     }
@@ -207,60 +213,74 @@ namespace station3 {
             if (instance.imgcontainer.children.length == 0) {
                 instance.check();
                 if (instance.imgcontainer.children.length == 0) {
+                    instance.changeClasses("right")
                     final();
                 }
             }
         }
 
         check(): void {
-            let allAchildren: HTMLCollection = instance.containerA.children;
-            for (let ele of allAchildren) {
+            let allAchildren: NodeListOf<ChildNode> = this.containerA.childNodes;
+            let arrA = Array.from(allAchildren)
+
+            for (let i: number = 0; i < arrA.length; i++) {
+
+                let ele: HTMLElement = <HTMLElement>arrA[i];
                 if (ele.classList.contains("contB") || ele.classList.contains("contC") || ele.classList.contains("contD")) {
                     instance.imgcontainer.appendChild(ele);
-                    if (ele instanceof HTMLElement) {
-                        let off: string = <string>ele.getAttribute("value")
-                        ele.style.left = off + "px";
-                        ele.style.position = "absolute"
-                    }
+                    instance.changeClasses("wrong")
+                    let off: string = <string>ele.getAttribute("value")
+                    ele.style.left = off + "px";
+                    ele.style.position = "absolute"
                     instance.timeoutWiggle(ele);
                 }
             }
 
-            let allBchildren: HTMLCollection = instance.containerB.children;
-            for (let ele of allBchildren) {
+
+
+            let allBchildren: NodeListOf<ChildNode> = instance.containerB.childNodes;
+            let arrB = Array.from(allBchildren);
+            for (let i: number = 0; i < arrB.length; i++) {
+                console.log("b")
+                let ele: HTMLElement = <HTMLElement>arrB[i];
                 if (ele.classList.contains("contA") || ele.classList.contains("contC") || ele.classList.contains("contD")) {
                     instance.imgcontainer.appendChild(ele);
-                    if (ele instanceof HTMLElement) {
-                        let off: string = <string>ele.getAttribute("value")
-                        ele.style.left = off + "px";
-                        ele.style.position = "absolute"
-                    }
+                    instance.changeClasses("wrong")
+                    let off: string = <string>ele.getAttribute("value")
+                    ele.style.left = off + "px";
+                    ele.style.position = "absolute"
                     instance.timeoutWiggle(ele);
                 }
             }
 
-            let allCchildren: HTMLCollection = instance.containerC.children;
-            for (let ele of allCchildren) {
+
+
+            let allCchildren: NodeListOf<ChildNode> = instance.containerC.childNodes;
+            let arrC = Array.from(allCchildren);
+            for (let i: number = 0; i < arrC.length; i++) {
+                console.log("c")
+                let ele: HTMLElement = <HTMLElement>arrC[i];
                 if (ele.classList.contains("contA") || ele.classList.contains("contB") || ele.classList.contains("contD")) {
                     instance.imgcontainer.appendChild(ele);
-                    if (ele instanceof HTMLElement) {
-                        let off: string = <string>ele.getAttribute("value")
-                        ele.style.left = off + "px";
-                        ele.style.position = "absolute"
-                    }
+                    instance.changeClasses("wrong")
+                    let off: string = <string>ele.getAttribute("value")
+                    ele.style.left = off + "px";
+                    ele.style.position = "absolute"
                     instance.timeoutWiggle(ele);
                 }
             }
 
-            let allDchildren: HTMLCollection = instance.containerD.children;
-            for (let ele of allDchildren) {
+            let allDchildren: NodeListOf<ChildNode> = instance.containerD.childNodes;
+            let arrD = Array.from(allDchildren)
+            for (let i: number = 0; i < arrD.length; i++) {
+                console.log("d")
+                let ele: HTMLElement = <HTMLElement>arrD[i];
                 if (ele.classList.contains("contA") || ele.classList.contains("contB") || ele.classList.contains("contC")) {
                     instance.imgcontainer.appendChild(ele);
-                    if (ele instanceof HTMLElement) {
-                        let off: string = <string>ele.getAttribute("value")
-                        ele.style.left = off + "px";
-                        ele.style.position = "absolute"
-                    }
+                    instance.changeClasses("wrong")
+                    let off: string = <string>ele.getAttribute("value")
+                    ele.style.left = off + "px";
+                    ele.style.position = "absolute"
                     instance.timeoutWiggle(ele);
                 }
             }
@@ -280,6 +300,45 @@ namespace station3 {
             }
             else
                 return false;
+        }
+
+        changeClasses(_class: string): void {
+            switch (_class) {
+                case "right":
+                    if (labelA.classList.contains("wrong"))
+                        labelA.classList.remove("wrong");
+
+                    if (labelB.classList.contains("wrong"))
+                        labelB.classList.remove("wrong");
+
+                    if (labelC.classList.contains("wrong"))
+                        labelC.classList.remove("wrong");
+
+                    if (labelD.classList.contains("wrong"))
+                        labelD.classList.remove("wrong");
+
+                    if (fbBtn.classList.contains("wrong"))
+                        fbBtn.classList.remove("wrong")
+
+                    labelA.classList.add("right");
+                    labelB.classList.add("right");
+                    labelC.classList.add("right");
+                    labelD.classList.add("right");
+                    fbBtn.classList.add("right");
+                    fbBtn.innerHTML = "Super, du hast alle richtig zugeordnet!";
+
+                    break;
+
+                case "wrong":
+                    labelA.classList.add("wrong");
+                    labelB.classList.add("wrong");
+                    labelC.classList.add("wrong");
+                    labelD.classList.add("wrong");
+                    fbBtn.classList.add("wrong");
+                    fbBtn.innerHTML = "Das stimmt leider nicht, schau dir die Bäume nochmal genauer an.";
+
+                    break;
+            }
         }
     }
 
