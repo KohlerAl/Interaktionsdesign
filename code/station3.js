@@ -1,6 +1,6 @@
 "use strict";
 var station3;
-(function (station3_1) {
+(function (station3) {
     window.addEventListener("load", handleLoad);
     let dragDrop;
     let dragA;
@@ -64,8 +64,7 @@ var station3;
         let station1 = Number(localStorage.getItem("station1"));
         let station2 = Number(localStorage.getItem("station2"));
         let station22 = Number(localStorage.getItem("station22"));
-        let station3 = Number(localStorage.getItem("station3"));
-        localStorage.setItem("points", station1 + station2 + station22 + station3 + "");
+        localStorage.setItem("points", station1 + station2 + station22 + 15 + "");
         localStorage.setItem("current", "3");
     }
     class DragDrop {
@@ -230,7 +229,7 @@ var station3;
                 return false;
         }
     }
-    station3_1.DragDrop = DragDrop;
+    station3.DragDrop = DragDrop;
     class DragElement {
         htmlElement;
         constructor(_ele) {
@@ -250,6 +249,6 @@ var station3;
             dragged.style.left = "0px";
         }
     }
-    station3_1.DragElement = DragElement;
+    station3.DragElement = DragElement;
 })(station3 || (station3 = {}));
 //# sourceMappingURL=station3.js.map

@@ -13,6 +13,10 @@ namespace station3 {
 
     let currentOff: number = 0;
 
+    let labelA: HTMLLabelElement; 
+    let labelB: HTMLLabelElement; 
+    let labelC: HTMLLabelElement; 
+    let labelD: HTMLLabelElement; 
 
     function handleLoad(): void {
         dragDrop = <HTMLDivElement>document.querySelector("#dragdropContainer");
@@ -62,10 +66,10 @@ namespace station3 {
         imgcontainer = <HTMLDivElement>document.querySelector("#imgContainer");
         imgcontainer.style.top = contwidth * 2 + 80 + "px";
 
-        let labelA: HTMLLabelElement = <HTMLLabelElement>document.querySelector("#a");
-        let labelB: HTMLLabelElement = <HTMLLabelElement>document.querySelector("#b");
-        let labelC: HTMLLabelElement = <HTMLLabelElement>document.querySelector("#c");
-        let labelD: HTMLLabelElement = <HTMLLabelElement>document.querySelector("#d");
+        labelA =  <HTMLLabelElement>document.querySelector("#a");
+        labelB = <HTMLLabelElement>document.querySelector("#b");
+        labelC = <HTMLLabelElement>document.querySelector("#c");
+        labelD = <HTMLLabelElement>document.querySelector("#d");
 
         labelA.style.left = contwidth - 25 + "px";
         labelB.style.left = contwidth * 2 - 15 + "px";
@@ -83,8 +87,7 @@ namespace station3 {
         let station1: number = Number(localStorage.getItem("station1"));
         let station2: number = Number(localStorage.getItem("station2"));
         let station22: number = Number(localStorage.getItem("station22"));
-        let station3: number = Number(localStorage.getItem("station3"));
-        localStorage.setItem("points", station1 + station2 + station22 + station3 + "");
+        localStorage.setItem("points", station1 + station2 + station22 + 15 + "");
         localStorage.setItem("current", "3");
     }
 
