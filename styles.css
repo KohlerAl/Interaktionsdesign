@@ -114,6 +114,9 @@ label {
     margin-top: 10px;
 }
 
+.super {
+    font-size: 15px;
+}
 .charlie {
     max-width: 320px;
     max-height: 175px;
@@ -254,6 +257,39 @@ label {
     font-size: 25px;
 }
 
+.contentWrapper p.answerBox {
+    background-color: #EFB95F;
+    border: 1px solid #45241B;
+    width: 50%;
+    margin: auto;
+    margin-bottom: auto;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.questionWrapper h4.smallHeader {
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.memoryCard {
+    width: 90px;
+    height: 90px;
+    background-color: #559A64;
+    border-radius: 15px;
+    padding: 2px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memoryCard img {
+    max-width: 90px;
+    max-width: 90px;
+    display: none;
+}
 
 /* IDs */
 #station1 {
@@ -346,6 +382,12 @@ label#d {
     display: none;
     width: 150px;
     height: 150px;
+}
+
+#memoryBox {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 /* ProgressBar */
