@@ -92,6 +92,7 @@ namespace station3 {
         let station1: number = Number(localStorage.getItem("station1"));
         let station2: number = Number(localStorage.getItem("station2"));
         let station22: number = Number(localStorage.getItem("station22"));
+        localStorage.setItem("station3", "15"); 
         next.style.display = "block";
         localStorage.setItem("points", station1 + station2 + station22 + 15 + "");
         localStorage.setItem("current", "3");

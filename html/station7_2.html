@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlies Abenteuer</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../code/progress.js"></script>
+    <script src="../code/station7_2.js"></script>
+    <link rel="icon" href="../img/Haselnuss.PNG" type="image/x-icon">
+</head>
+
+<body>
+    <h2 id="station1">Charlies Ausflugsort</h2>
+    <div class="contentWrapper">
+        <p class="smallPara">An meinem Ausflugsort, der Donauquelle, entspringt die Donau. Weißt du,
+            durch welche Länder sie fließt?
+            <br><br>
+            Tippe die richtigen Länder an.
+        </p>
+
+        <div id="gameContainer">
+            <div class="clickyCont false">
+                <p>Italien</p>
+            </div>
+            <div class="clickyCont true">
+                <p>Serbien</p>
+            </div>
+            <div class="clickyCont true">
+                <p>Moldawien</p>
+            </div>
+            <div class="clickyCont false">
+                <p>Spanien</p>
+            </div>
+            <div class="clickyCont true">
+                <p>Rumänien</p>
+            </div>
+            <div class="clickyCont true">
+                <p>Ukraine</p>
+            </div>
+            <div class="clickyCont true">
+                <p>Deutschland</p>
+            </div>
+            <div class="clickyCont true">
+                <p>Österreich</p>
+            </div>
+            <div class="clickyCont true">
+                <p>Kroatien</p>
+            </div>
+            <div class="clickyCont true">
+                <p>Slowakei</p>
+            </div>
+            <div class="clickyCont false">
+                <p>Schweiz</p>
+            </div>
+            <div class="clickyCont false">
+                <p>Frankreich</p>
+            </div>
+            <div class="clickyCont true">
+                <p>Ungarn</p>
+            </div>
+            <div class="clickyCont true">
+                <p>Bulgarien</p>
+            </div>
+        </div>
+
+        <button type="button" id="checkButton" class="country">Antworten prüfen</button>
+        <button type="button" class="feedbackBtn country"></button>
+        <a href="score.html" class="next"><img src="../img/arrow.png"></a>
+        <label><progress value=".4" max="1"></progress> </label>
+    </div>
+</body>
+
+</html>

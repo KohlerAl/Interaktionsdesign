@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlies Abenteuer</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../code/progress.js"></script>
+    <script src="../code/station5.js"></script>
+    <link rel="icon" href="../img/Haselnuss.PNG" type="image/x-icon">
+</head>
+
+<body>
+    <h2 id="station1">Charlies Lieblingsessen</h2>
+    <div class="contentWrapper">
+        <p class="smallPara">Was ess ich gerne? Füttere mich, aber nur mit leckerem Essen.</p>
+        <div id="dragdropContainer" class="charliesFoodContainer">
+            <div id="touchMover"></div>
+            <div id="charliesFood">
+                <img src="../img/Samen.png" id="drag1" class="true">
+                <img src="../img/Haselnuss.png" id="drag2" class="true">
+                <img src="../img/Mandeln.png" id="drag3" class="false">
+                <img src="../img/Vogeleier.png" id="drag4" class="true">
+                <img src="../img/Brot.png" id="drag5" class="false">
+                <img src="../img/Fichetnzapfen.png" id="drag6" class="true">
+            </div>
+            <div id="dropA" class="food"></div>
+            <img src="../img/charlie.png" class="charlieSmall food">
+
+            <button type="button" id="checkButton">Antworten prüfen</button>
+            
+        </div> 
+
+
+        <button type="button" class="feedbackBtn food">Toll gemacht!</button>
+        <a href="score.html" class="next"><img src="../img/arrow.png"></a>
+        <label><progress value=".4" max="1"></progress> </label>
+    </div>
+</body>
+
+</html>

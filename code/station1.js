@@ -58,7 +58,7 @@ var station1;
     function final() {
         let station = Number(localStorage.getItem("station1"));
         localStorage.setItem("points", station + "");
-        console.log(localStorage.getItem("points"));
+        localStorage.setItem("current", "1");
     }
 })(station1 || (station1 = {}));
 //# sourceMappingURL=station1.js.map

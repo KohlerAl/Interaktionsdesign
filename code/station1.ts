@@ -70,6 +70,6 @@ namespace station1 {
     function final(): void {
         let station: number = Number(localStorage.getItem("station1")); 
         localStorage.setItem("points", station + ""); 
-        console.log(localStorage.getItem("points"))
+        localStorage.setItem("current", "1"); 
     }
 }

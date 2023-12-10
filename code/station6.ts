@@ -7,6 +7,9 @@ namespace Station6 {
     let isOneturned: boolean = false;
     let firstClicked: HTMLElement;
 
+    let allClicked: number = 0;
+    let allowClicked: boolean = true;
+
     function handleLoad(): void {
         setup();
         memoryBox = <HTMLDivElement>document.querySelector("#memoryBox");
@@ -21,28 +24,46 @@ namespace Station6 {
     function check(_event: PointerEvent): void {
         let target: HTMLElement = <HTMLElement>_event.target;
 
-        if (!isOneturned) {
+        if (!isOneturned && allowClicked) {
             let img: HTMLImageElement = <HTMLImageElement>target.querySelector("img");
             img.style.display = "initial";
             firstClicked = target;
             isOneturned = true;
             target.removeEventListener("pointerdown", check);
         }
-        else if (isOneturned) {
+        else if (isOneturned && allowClicked) {
             let img: HTMLImageElement = <HTMLImageElement>target.querySelector("img");
             img.style.display = "initial";
 
+            allowClicked = false;
             if (firstClicked.classList[1] == target.classList[1]) {
-                target.removeEventListener("pointerdown", check); 
+                allowClicked = true; 
+                target.removeEventListener("pointerdown", check);
+                allClicked += 2;
+                isOneturned = false;
+                if (allClicked == 8) {
+                    next.style.display = "block"; 
+                    fbBtn.style.display = "block"; 
+                    final();
+                }
             }
             else {
-                firstClicked.addEventListener("pointerdown", check); 
-                let firstImg: HTMLImageElement = <HTMLImageElement>firstClicked.querySelector("img")
-                firstImg.style.display = "none";
-                img.style.display = "none"; 
+                window.setTimeout(function (): void {
+                    allowClicked = true;
+
+
+                    firstClicked.addEventListener("pointerdown", check);
+                    let firstImg: HTMLImageElement = <HTMLImageElement>firstClicked.querySelector("img")
+                    firstImg.style.display = "none";
+                    img.style.display = "none";
+                    isOneturned = false;
+
+                }, 2500)
             }
         }
+
     }
+
 
     function setup(): void {
         localStorage.setItem("station6", "0");
@@ -65,7 +86,10 @@ namespace Station6 {
         let station22: number = Number(localStorage.getItem("station22"));
         let station3: number = Number(localStorage.getItem("station3"));
         let station4: number = Number(localStorage.getItem("station4"));
-        localStorage.setItem("points", station1 + station2 + station22 + station3 + station4 + "");
-        localStorage.setItem("current", "4");
+        let station5: number = Number(localStorage.getItem("station5")); 
+        localStorage.setItem("station6", 15 + ""); 
+
+        localStorage.setItem("points", station1 + station2 + station22 + station3 + station4 + station5 + 15 + "");
+        localStorage.setItem("current", "6");
     }
 }

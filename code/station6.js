@@ -7,6 +7,8 @@ var Station6;
     let memoryBox;
     let isOneturned = false;
     let firstClicked;
+    let allClicked = 0;
+    let allowClicked = true;
     function handleLoad() {
         setup();
         memoryBox = document.querySelector("#memoryBox");
@@ -18,24 +20,37 @@ var Station6;
     }
     function check(_event) {
         let target = _event.target;
-        if (!isOneturned) {
+        if (!isOneturned && allowClicked) {
             let img = target.querySelector("img");
             img.style.display = "initial";
             firstClicked = target;
             isOneturned = true;
             target.removeEventListener("pointerdown", check);
         }
-        else if (isOneturned) {
+        else if (isOneturned && allowClicked) {
             let img = target.querySelector("img");
             img.style.display = "initial";
+            allowClicked = false;
             if (firstClicked.classList[1] == target.classList[1]) {
+                allowClicked = true;
                 target.removeEventListener("pointerdown", check);
+                allClicked += 2;
+                isOneturned = false;
+                if (allClicked == 8) {
+                    next.style.display = "block";
+                    fbBtn.style.display = "block";
+                    final();
+                }
             }
             else {
-                firstClicked.addEventListener("pointerdown", check);
-                let firstImg = firstClicked.querySelector("img");
-                firstImg.style.display = "none";
-                img.style.display = "none";
+                window.setTimeout(function () {
+                    allowClicked = true;
+                    firstClicked.addEventListener("pointerdown", check);
+                    let firstImg = firstClicked.querySelector("img");
+                    firstImg.style.display = "none";
+                    img.style.display = "none";
+                    isOneturned = false;
+                }, 2500);
             }
         }
     }
@@ -56,8 +71,10 @@ var Station6;
         let station22 = Number(localStorage.getItem("station22"));
         let station3 = Number(localStorage.getItem("station3"));
         let station4 = Number(localStorage.getItem("station4"));
-        localStorage.setItem("points", station1 + station2 + station22 + station3 + station4 + "");
-        localStorage.setItem("current", "4");
+        let station5 = Number(localStorage.getItem("station5"));
+        localStorage.setItem("station6", 15 + "");
+        localStorage.setItem("points", station1 + station2 + station22 + station3 + station4 + station5 + 15 + "");
+        localStorage.setItem("current", "6");
     }
 })(Station6 || (Station6 = {}));
 //# sourceMappingURL=station6.js.map

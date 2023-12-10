@@ -117,6 +117,7 @@ label {
 .super {
     font-size: 15px;
 }
+
 .charlie {
     max-width: 320px;
     max-height: 175px;
@@ -185,6 +186,21 @@ label {
     border-radius: 30px;
 }
 
+.feedbackBtn.food {
+    position: relative;
+    top: 165px;
+    font-size: 15px;
+    min-height: 40px;
+    background-color: #45241B;
+}
+
+.feedbackBtn.country {
+    background-color: #45241B00;
+    padding: 10px 0;
+    min-height: unset;
+    margin-top: 10px;
+}
+
 .right {
     background-color: #559A64 !important;
 }
@@ -194,7 +210,7 @@ label {
 }
 
 .florian {
-    background-color: #EFB95F;
+    background-color: #efba5f;
 }
 
 .next {
@@ -291,6 +307,37 @@ label {
     display: none;
 }
 
+.clickyCont {
+    background-color: #EFB95F;
+    border-radius: 15px;
+    margin: 3px 5px;
+}
+
+.clickyCont.clicked {
+    background-color: #E49006;
+}
+
+.clickyCont>p {
+    padding: 10px;
+    margin: 0;
+}
+
+#gameContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+#checkButton.country {
+    position: unset;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    display: block;
+}
+
 /* IDs */
 #station1 {
     padding: 0 20px;
@@ -355,12 +402,6 @@ label {
     position: absolute;
 }
 
-/* #dropB,
-#dropD {
-    left: 165px;
-    position: absolute;
-} */
-
 #dragdropContainer label {
     margin: 0 15px;
 }
@@ -384,10 +425,77 @@ label#d {
     height: 150px;
 }
 
-#memoryBox {
+#memoryBox,
+#charliesFood {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
+}
+
+#charliesFood {
+    height: 137px;
+    width: 350px;
+}
+
+img.food {
+    position: absolute;
+    right: 0px;
+}
+
+#checkButton {
+    position: absolute;
+    left: 15px;
+    top: 320px;
+    border: none;
+    border-radius: 15px;
+    color: #FBEAce;
+    background-color: #45241B;
+    padding: 10px;
+}
+
+#dropA.food {
+    width: 200px;
+    margin-top: 20px;
+}
+
+#charliesFood img,
+.charliesFoodContainer img {
+    max-width: 70px;
+    max-height: 70px;
+    margin: 5px 10px;
+}
+
+
+.charliesFoodContainer img.charlieSmall.food {
+    position: absolute;
+    right: 0px;
+    max-height: unset;
+    max-width: 120px;
+    margin: auto;
+    display: block;
+    margin-top: 15px;
+}
+
+#imageBox.fishyBox {
+    display: none;
+}
+
+#fishyCanvas {
+    position: absolute;
+    top: 0;
+}
+
+#startGame {
+    display: block;
+    width: 150px;
+    background-color: #559A64;
+    border: none;
+    border-radius: 15px;
+    color: #FBEAce;
+    min-height: 60px;
+    margin: auto;
+    font-size: 20px;
 }
 
 /* ProgressBar */
