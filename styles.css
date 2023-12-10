@@ -63,7 +63,7 @@ h1 {
 
 h2 {
     font-family: "extrabold";
-    font-size: 40px;
+    font-size: 35px;
 }
 
 h3 {
@@ -108,7 +108,7 @@ label {
 
 .smallPara {
     font-family: "regular";
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     padding: 5px;
     margin-top: 10px;
@@ -181,7 +181,7 @@ label {
     width: 300px;
     border: none;
     min-height: 60px;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 20px;
     border-radius: 30px;
 }
@@ -340,7 +340,7 @@ label {
 
 /* IDs */
 #station1 {
-    padding: 0 20px;
+    padding: 20px;
     margin: 5px 0 5px 0;
     text-align: center;
 }
@@ -401,6 +401,31 @@ label {
     max-height: 45px;
     position: absolute;
 }
+
+.final .contA,
+.final .contB,
+.final .contC,
+.final .contD,
+.final .contE {
+    position: unset;
+    display: inline-block;
+    border: 1px solid #45241B;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 5px;
+    max-width: unset;
+    max-height: unset;
+}
+
+.final #drop1 p, 
+.final #drop2 p, 
+.final #drop3 p, 
+.final #drop4 p, 
+.final #drop5 p {
+    border: none; 
+    padding: 5px;
+}
+
 
 #dragdropContainer label {
     margin: 0 15px;
@@ -497,6 +522,58 @@ img.food {
     margin: auto;
     font-size: 20px;
 }
+
+#moleOne {
+    max-width:65px;
+    max-height: 65px;
+    position: relative;
+    top: -200px;
+}
+
+#moleTwo {
+    max-height: 65px;
+    max-width: 65px;
+    margin-left: 10px;
+}
+
+#moleGame {
+    max-width: 250px;
+    max-height: 250px;
+    rotate: 20deg;
+}
+
+#moleBtnWrapper button.moleBtn {
+    border: 1px solid #45241B;
+    background-color: #45241B00;
+    border-radius: 50px;
+    padding:  5px;
+    width: 30px;
+    height: 30px;
+    color: #FBEAce;
+}
+
+#moleBtnWrapper {
+    width: 200px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.contentWrapper.final #drop1, 
+.contentWrapper.final #drop2, 
+.contentWrapper.final #drop3, 
+.contentWrapper.final #drop4, 
+.contentWrapper.final #drop5 {
+    display: block;
+    width: 150px;
+    height: 40px;
+    margin: auto;
+    border-radius: 15px;
+    border: 1px solid #45241B;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+} 
 
 /* ProgressBar */
 
