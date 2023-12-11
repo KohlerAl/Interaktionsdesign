@@ -200,8 +200,8 @@ namespace Station10 {
             let target: HTMLElement = <HTMLElement>_event.target;
             instance.lastID = target.id;
             instance.isDragging = true;
-            instance.mouseMover.style.top = _event.changedTouches[0].clientY + 10 + "px";
-            instance.mouseMover.style.left = _event.changedTouches[0].clientX + 10 + "px";
+            instance.mouseMover.style.top = _event.changedTouches[0].clientY + 3 + "px";
+            instance.mouseMover.style.left = _event.changedTouches[0].clientX + 3 + "px";
 
             instance.mouseMover.appendChild(<HTMLImageElement>document.querySelector("#" + target.id))
         }
