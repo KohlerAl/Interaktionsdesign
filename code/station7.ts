@@ -248,6 +248,7 @@ namespace Station7 {
 
                     next.style.display = "block"; 
                     fbBtn.style.display = "block"; 
+                    fbBtn.classList.add("right"); 
                     fbBtn.innerHTML = "Toll Gemacht! Dank dir hat es Florian ans Ende der Donau geschafft!"; 
                 }
                 back.xPos = width;
