@@ -205,7 +205,7 @@ var Station10;
         let station8 = Number(localStorage.getItem("station8"));
         let station9 = Number(localStorage.getItem("station9"));
         localStorage.setItem("points", station1 + station2 + station22 + station3 + station4 + station5 + station6 + station7 + station72 + station8 + station9 + "");
-        localStorage.setItem("current", "9");
+        localStorage.setItem("current", "10");
     }
 })(Station10 || (Station10 = {}));
 //# sourceMappingURL=station10.js.map

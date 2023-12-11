@@ -13,7 +13,6 @@ var score;
         let progress = document.querySelector("progress");
         progress.setAttribute("value", "." + current);
         current++;
-        console.log(current);
         let a = document.querySelector(".next");
         a.setAttribute("href", "station" + current + "_1.html");
     }

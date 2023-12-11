@@ -15,7 +15,6 @@ namespace score {
         let progress: HTMLProgressElement = <HTMLProgressElement>document.querySelector("progress"); 
         progress.setAttribute("value", "." + current); 
         current++; 
-        console.log(current)
 
         let a: HTMLAnchorElement = <HTMLAnchorElement>document.querySelector(".next"); 
         a.setAttribute("href", "station" + current + "_1.html"); 

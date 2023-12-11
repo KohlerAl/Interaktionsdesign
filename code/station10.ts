@@ -241,6 +241,6 @@ namespace Station10 {
 
 
         localStorage.setItem("points", station1 + station2 + station22 + station3 + station4 + station5 + station6 + station7 + station72 + station8 + station9 + "");
-        localStorage.setItem("current", "9");
+        localStorage.setItem("current", "10");
     }
 }
