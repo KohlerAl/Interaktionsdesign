@@ -41,6 +41,8 @@ namespace Station6 {
                 target.removeEventListener("pointerdown", check);
                 allClicked += 2;
                 isOneturned = false;
+                target.classList.add("right"); 
+                firstClicked.classList.add("right"); 
                 if (allClicked == 8) {
                     next.style.display = "block"; 
                     fbBtn.style.display = "block"; 
@@ -48,6 +50,8 @@ namespace Station6 {
                 }
             }
             else {
+                target.classList.add("wrong"); 
+                firstClicked.classList.add("wrong"); 
                 window.setTimeout(function (): void {
                     allowClicked = true;
 
@@ -57,6 +61,8 @@ namespace Station6 {
                     firstImg.style.display = "none";
                     img.style.display = "none";
                     isOneturned = false;
+                    target.classList.remove("wrong"); 
+                    firstClicked.classList.remove("wrong"); 
 
                 }, 2500)
             }
