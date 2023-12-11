@@ -66,8 +66,8 @@ var Station10;
             if (target.children.length == 0) {
                 _event.preventDefault();
             }
-            instance.mouseMover.style.top = _event.changedTouches[0].clientY + 5 + "px";
-            instance.mouseMover.style.left = _event.changedTouches[0].clientX + 5 + "px";
+            instance.mouseMover.style.top = _event.changedTouches[0].clientY - 30 + "px";
+            instance.mouseMover.style.left = _event.changedTouches[0].clientX - 75 + "px";
         }
         drop(_event) {
             _event.preventDefault();
@@ -160,9 +160,14 @@ var Station10;
     Station10.DragDrop = DragDrop;
     class DragElement {
         htmlElement;
+        width;
+        height;
         constructor(_ele) {
             this.htmlElement = _ele;
             this.htmlElement.addEventListener("touchstart", this.drag);
+            this.width = this.htmlElement.getBoundingClientRect().width;
+            this.height = this.htmlElement.getBoundingClientRect().height;
+            console.log(this.height, this.width);
         }
         drag(_event) {
             _event.preventDefault();
@@ -170,8 +175,8 @@ var Station10;
             let target = _event.target;
             instance.lastID = target.id;
             instance.isDragging = true;
-            instance.mouseMover.style.top = _event.changedTouches[0].clientY + 3 + "px";
-            instance.mouseMover.style.left = _event.changedTouches[0].clientX + 3 + "px";
+            instance.mouseMover.style.top = _event.changedTouches[0].clientY - 30 + "px";
+            instance.mouseMover.style.left = _event.changedTouches[0].clientX - 75 + "px";
             instance.mouseMover.appendChild(document.querySelector("#" + target.id));
         }
     }
